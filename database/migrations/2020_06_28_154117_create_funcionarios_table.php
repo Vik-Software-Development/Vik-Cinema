@@ -15,9 +15,9 @@ class CreateFuncionariosTable extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Name');
+            $table->string('Nome');
             $table->string('CPF');
-            $table->string('Telefone')->nullable();
+            $table->string('Telefone');
             $table->string('Email');
             $table->string('Senha');
             $table->timestamps();
