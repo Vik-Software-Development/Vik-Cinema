@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/funcionarios', 'FuncionarioController@index')->name('funcionario.index');
+Route::get('/funcionarios/create', 'FuncionarioController@create')->name('funcionario.create');
+Route::post('/funcionarios/create', 'FuncionarioController@store')->name('funcionario.create.do');
