@@ -1,0 +1,19 @@
+.titulo{
+	font-family: sans-serif;
+	font-size: 50px;
+}
+
+.botao_table{
+	float: right;
+	margin-bottom: 10px;
+	margin-right: 50px;
+}
+
+.acao_table{
+	margin-right: 10px;
+}
+
+.ver_p{
+	font-family: sans-serif;
+	font-size: 25px;
+}
