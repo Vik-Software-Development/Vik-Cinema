@@ -2,9 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Funcionario extends Model
+class Funcionario extends Authenticatable
 {
     protected $fillable = [
         'Nome',
@@ -12,9 +14,15 @@ class Funcionario extends Model
         'Telefone',
         'Email',
         'Senha',
+        'Admin',
     ];
 
     protected $hidden = [
         'Senha',
     ];
+
+    public function getAuthPassword()
+    {
+        return $this->Senha;
+    }
 }
