@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Funcionario;
 use Illuminate\Support\Facades\Hash;
+use SebastianBergmann\Environment\Console;
 
 class FuncionarioController extends Controller
 {
@@ -15,7 +16,7 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        return view('Funcionario/index');
+        return view('Funcionario/index')->with('funcionarios', Funcionario::all());
     }
 
     /**
@@ -68,9 +69,9 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Funcionario $id)
     {
-        //
+        return view('Funcionario/show')->with('funcionario', $id);
     }
 
     /**
@@ -79,9 +80,9 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Funcionario $id)
     {
-        //
+        return view('Funcionario/edit')->with('funcionario', $id);
     }
 
     /**
@@ -91,9 +92,31 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Funcionario $id)
     {
-        //
+        if (strlen($request->Nome) < 3 || !preg_match('/^[a-z]*$/i', $request->Nome)) {
+            //Nome Inválido
+        }
+
+        if (strlen($request->CPF) != 11 || !preg_match('/^[0-9]*$/', $request->CPF)) {
+            //CPF inválido
+        }
+        if (strlen($request->Telefone) < 15) {
+            //telefone invalido
+        }
+        if (!filter_var($request->Email, FILTER_VALIDATE_EMAIL)) {
+            //email invalido
+        }
+        if (strlen($request->Senha) < 8) {
+            //senha com menos de 8 caracteres
+        }
+
+        $id->Nome = $request->Nome;
+        $id->CPF = $request->CPF;
+        $id->Telefone = $request->Telefone;
+        $id->Email = $request->Email;
+        $id->Senha = Hash::make($request->Senha);
+        $id->save();
     }
 
     /**
@@ -102,8 +125,8 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Funcionario $id)
     {
-        //
+        $id->delete();
     }
 }
