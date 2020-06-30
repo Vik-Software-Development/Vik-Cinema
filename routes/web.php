@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::delete('/deletar/sessão/{id}','SessaoController@destroy')->name('deletarSessao');
+Route::get('/ver/sessão/{id}','SessaoController@show')->name('verSessao');
+Route::put('/update/sessão/{id}','SessaoController@update')->name('updateSessao');
+Route::get('/editar/sessão/{id}','SessaoController@edit')->name('editarSessao');
 Route::post('/inserir/sessão','SessaoController@store')->name('inserirSessao');
 Route::get('/cadastrar/sessão','SessaoController@create')->name('cadastrarSessao');
 Route::get('/listar/sessões','SessaoController@index')->name('listarSessoes');

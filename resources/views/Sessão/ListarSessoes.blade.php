@@ -20,8 +20,8 @@
 				<td>{{$sessao->data}}</td>
 				<td>{{$sessao->hora}}</td>
 				<td>
-					<a href="" class="acao_table">Editar</a>
-					<a href="" class="acao_table">Visualizar</a>
+					<a href="{{route('editarSessao',$sessao->id)}}" class="acao_table">Editar</a>
+					<a href="{{route('verSessao',$sessao->id)}}" class="acao_table">Visualizar</a>
 				</td>
 			</tr>
 		@endforeach

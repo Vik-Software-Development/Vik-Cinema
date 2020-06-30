@@ -57,6 +57,7 @@ class SessaoController extends Controller
      */
     public function store(SessaoFormRequest $request)
     {
+        //validação de Sessão
         $filme = $this->filme->where('nome',$request->idFilme)->get();
         if(count($filme) == 0){
             return redirect()->back();
@@ -65,7 +66,12 @@ class SessaoController extends Controller
         if(count($sala) == 0){
             return redirect()->back();
         }
+        $valSessao = $this->sessao->where([['data',$request->data],['hora',$request->hora],['idSala',$sala[0]->id]])->get();
+        if(count($valSessao) > 0){
+            return redirect()->back();
+        }
 
+        //cadastrando a Sessão        
         $dados = $request->except('_token');
         $dados['idFilme'] = $filme[0]->id;
         $dados['idSala'] = $sala[0]->id;
@@ -87,7 +93,11 @@ class SessaoController extends Controller
      */
     public function show($id)
     {
-        //
+        $sessao = $this->sessao->find($id);
+        $sala = $this->sala->find($sessao->idSala);
+        $filme = $this->filme->find($sessao->idFilme);
+        $titulo = "Ver Sessão";
+        return view('Sessão.VerSessao',compact('sessao','sala','filme','titulo'));
     }
 
     /**
@@ -98,7 +108,12 @@ class SessaoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sessao = $this->sessao->find($id);
+        $filme = $this->filme->find($sessao->idFilme);
+        $sala = $this->sala->find($sessao->idSala);
+        $titulo = "Editar Sessão";
+        $hora = ['10:00','14:00','18:00','22:00'];
+        return view('Sessão.EditarSessao',compact('sessao','filme','sala','titulo','hora'));
     }
 
     /**
@@ -108,9 +123,34 @@ class SessaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SessaoFormRequest $request, $id)
     {
-        //
+        //validação de Sessão
+        $filme = $this->filme->where('nome',$request->idFilme)->get();
+        if(count($filme) == 0){
+            return redirect()->back();
+        }
+        $sala = $this->sala->where('nome',$request->idSala)->get();
+        if(count($sala) == 0){
+            return redirect()->back();
+        }
+        $valSessao = $this->sessao->where([['data',$request->data],['hora',$request->hora],['idSala',$sala[0]->id]])->get();
+        if(count($valSessao) > 0){
+            return redirect()->back();
+        }
+
+        //update Sessão        
+        $dados = $request->except('_token','_method');
+        $dados['idFilme'] = $filme[0]->id;
+        $dados['idSala'] = $sala[0]->id;
+        $sessao = $this->sessao->find($id);
+        $delete = $sessao->update($dados);
+
+        if($delete){
+            return redirect()->route('listarSessoes');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -121,6 +161,13 @@ class SessaoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sessao = $this->sessao->find($id);
+        $delete = $sessao->delete();
+
+        if($delete){
+            return redirect()->route('listarSessoes');
+        }else{
+            return redirect()->back();
+        }
     }
 }

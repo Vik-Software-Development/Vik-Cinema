@@ -43,7 +43,7 @@
 
 		<div class="form-group">
 			<label for="duracao">Duração:</label>
-			<input data-mask="00:00:00" type="text" name="duracao" id="duracao" class="form-control" value="{{$filme->duracao}}"/>
+			<input data-mask="00:00:00" type="text" name="duracao" id="duracao" class="form-control" value="{{$filme->duracao}}" placeholder="Hora/Minuto/Segundo (ex: 01:20:20)" />
 		</div>
 
 

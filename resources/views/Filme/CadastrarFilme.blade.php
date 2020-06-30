@@ -36,7 +36,7 @@
 
 		<div class="form-group">
 			<label for="duracao">Duração:</label>
-			<input type="text" name="duracao" id="duracao" class="form-control" data-mask="00:00:00"/>
+			<input type="text" name="duracao" id="duracao" class="form-control" data-mask="00:00:00" placeholder="Hora/Minuto/Segundo (ex: 01:20:20)" />
 		</div>
 
 
