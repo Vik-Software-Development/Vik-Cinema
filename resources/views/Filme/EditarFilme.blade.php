@@ -43,11 +43,19 @@
 
 		<div class="form-group">
 			<label for="duracao">Duração:</label>
-			<input type="text" name="duracao" id="duracao" class="form-control" value="{{$filme->duracao}}"/>
+			<input data-mask="00:00:00" type="text" name="duracao" id="duracao" class="form-control" value="{{$filme->duracao}}"/>
 		</div>
 
 
 		<center><button class="btn btn-dark">Atualizar</button></center>
 	</form>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js'></script>
+	<script>
+		$(document).ready(function(){
+			$('#duracao').mask('00:00:00');
+		})
+	</script>
 
 @endsection
