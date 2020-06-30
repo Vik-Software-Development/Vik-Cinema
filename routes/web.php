@@ -10,6 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::delete('/deletar/filme/{id}','FilmeController@destroy')->name('deletarFilme');
+Route::get('/ver/filme/{id}', 'FilmeController@show')->name('verFilme');
+Route::put('/update/filme/{id}','FilmeController@update')->name('updateFilme');
+Route::get('/editar/filme/{id}','FilmeController@edit')->name('editarFilme');
+Route::post('/inserir/filme','FilmeController@store')->name('inserirFilme');
+Route::get('/cadastrar/filme','FilmeController@create')->name('cadastrarFilme');
+Route::get('/listar/filmes','FilmeController@index')->name('listarFilmes');
 Route::delete('/deletar/sala/{id}', 'SalaController@destroy')->name('deletarSala');
 Route::get('/ver/sala/{id}', 'SalaController@show')->name('verSala');
 Route::put('/update/sala/{id}', 'SalaController@update')->name('updateSala');
