@@ -13,7 +13,7 @@
     <h3>Nome</h3>
     @forelse ($funcionarios as $funcionario)
     <div>
-        <a href="{{route('funcionario.show',$funcionario->id)}}">{{$funcionario->Nome}}</a>
+        <a href="{{route('funcionarios.show',$funcionario->id)}}">{{$funcionario->Nome}}</a>
     </div>
     @empty
     <div>

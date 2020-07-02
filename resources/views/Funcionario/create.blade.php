@@ -9,7 +9,7 @@
 
 <body>
     <div>
-        <form action="{{route('funcionario.create.do')}}" method="POST">
+        <form action="{{route('funcionarios.store')}}" method="POST">
             @csrf
             <div>
                 <label for='Nome'>Nome</label>

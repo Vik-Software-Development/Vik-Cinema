@@ -9,8 +9,9 @@
 
 <body>
     <div>
-        <form action="{{route('funcionario.edit.do',$funcionario->id)}}" method="POST">
+        <form action="{{route('funcionarios.update',$funcionario->id)}}" method="POST">
             @csrf
+            @method('PUT')
             <div>
                 <label for='Nome'>Nome</label>
                 <input type='text' name='Nome' value="{{$funcionario->Nome}}">

@@ -13,9 +13,10 @@
     <h4>{{$funcionario->Telefone}}</h4>
     <h4>{{$funcionario->Email}}</h4>
     <br>
-    <a href="{{route('funcionario.edit',$funcionario->id)}}">Editar</a>
-    <form action="{{route('funcionario.destroy',$funcionario->id)}}" method="POST">
+    <a href="{{route('funcionarios.edit',[$funcionario->id])}}">Editar</a>
+    <form action="{{route('funcionarios.destroy',[$funcionario->id])}}" method="POST">
         @csrf
+        @method('DELETE')
         <input type="submit" value="Deletar">
     </form>
 
