@@ -10,7 +10,7 @@
 	<p class="ver_p"><strong>Data:</strong> {{$sessao->data}}</p>
 	<p class="ver_p"><strong>Hora:</strong> {{$sessao->hora}}</p>
 
-	<form method="post" action="{{route('deletarSessao',$sessao->id)}}">
+	<form method="post" action="{{route('sessaos.destroy',$sessao->id)}}">
 		{!! csrf_field() !!}
 		{!! method_field('DELETE') !!}
 		<button class="btn btn-dark">Deletar</button>

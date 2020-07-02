@@ -34,9 +34,9 @@
 Route::get('/', function () {
     return view('welcome');
 })->name('/');
-
-
-
+Route::resource('sessaos','SessaoController');
+Route::resource('filmes', 'FilmeController');
+Route::resource('salas','SalaController');
 Route::resource('funcionarios', 'FuncionarioController');
 
 //Admin e Login

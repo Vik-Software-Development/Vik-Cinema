@@ -18,7 +18,7 @@
 
 	<h1 class="titulo">{{$titulo}}</h1>
 
-	<form method="post" action="{{route('inserirSessao')}}">
+	<form method="post" action="{{route('sessaos.store')}}">
 		{!! csrf_field() !!}
 		
 		<div class="form-group">

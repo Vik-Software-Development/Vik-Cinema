@@ -12,7 +12,7 @@
 
 	<h1 class="titulo">{{$titulo}}</h1>
 
-	<form method="post" action="{{route('updateSessao',$sessao->id)}}">
+	<form method="post" action="{{route('sessaos.update', $sessao->id)}}">
 		{!! csrf_field() !!}
 		{!! method_field('PUT') !!}
 		
