@@ -69,9 +69,9 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Funcionario $id)
+    public function show(Funcionario $funcionario)
     {
-        return view('Funcionario/show')->with('funcionario', $id);
+        return view('Funcionario/show')->with('funcionario', $funcionario);
     }
 
     /**
@@ -80,9 +80,9 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Funcionario $id)
+    public function edit(Funcionario $funcionario)
     {
-        return view('Funcionario/edit')->with('funcionario', $id);
+        return view('Funcionario/edit')->with('funcionario', $funcionario);
     }
 
     /**
@@ -92,7 +92,7 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Funcionario $id)
+    public function update(Request $request, Funcionario $funcionario)
     {
         if (strlen($request->Nome) < 3 || !preg_match('/^[a-z]*$/i', $request->Nome)) {
             //Nome Inválido
@@ -111,12 +111,12 @@ class FuncionarioController extends Controller
             //senha com menos de 8 caracteres
         }
 
-        $id->Nome = $request->Nome;
-        $id->CPF = $request->CPF;
-        $id->Telefone = $request->Telefone;
-        $id->Email = $request->Email;
-        $id->Senha = Hash::make($request->Senha);
-        $id->save();
+        $funcionario->Nome = $request->Nome;
+        $funcionario->CPF = $request->CPF;
+        $funcionario->Telefone = $request->Telefone;
+        $funcionario->Email = $request->Email;
+        $funcionario->Senha = Hash::make($request->Senha);
+        $funcionario->save();
     }
 
     /**
@@ -125,8 +125,8 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Funcionario $id)
+    public function destroy(Funcionario $funcionario)
     {
-        $id->delete();
+        $funcionario->delete();
     }
 }
