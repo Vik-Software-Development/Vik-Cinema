@@ -11,8 +11,11 @@ class Bilhete extends Model
         'preço',
     ];
 
-    public function user()
+    public function sessao()
     {
-        //return $this->belongsTo(Sessao::class,'sessao','id');
+        return $this->belongsTo('App\Sessão', 'sessao', 'id');
+        // 1 - Classe que pertence
+        // 2 - Chave Estrangeira nessa classe
+        // 3 - Chave primaria da outra classe
     }
 }
