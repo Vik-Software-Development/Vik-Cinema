@@ -12,7 +12,7 @@
 
 	<h1 class="titulo">{{$titulo}}</h1>
 
-	<form method="post" action="{{route('inserirSala')}}">
+	<form method="post" action="{{route('salas.store')}}">
 		{!! csrf_field() !!}
 		
 		<div class="form-group">

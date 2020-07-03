@@ -78,9 +78,9 @@ class FilmeController extends Controller
         $insert = $filme->create($dados);
 
         if($insert){
-            return redirect()->route('listarFilmes');
+            return redirect()->route('filmes.index');
         }else{
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Filme não cadastrado.']);
         }
     }
 
@@ -90,9 +90,8 @@ class FilmeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Filme $filme)
     {
-        $filme = $this->filme->find($id);
         $titulo = "Ver filme";
         return view('Filme.VerFilme',compact('filme','titulo'));
     }
@@ -103,7 +102,7 @@ class FilmeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Filme $filme)
     {
         $genero = [
             'Ação',
@@ -133,7 +132,6 @@ class FilmeController extends Controller
             'Terror',
             'Thriller'
        ];
-        $filme = $this->filme->find($id);
         $titulo = "Editar Filme";
         return view('Filme.EditarFilme',compact('filme','titulo','genero'));
     }
@@ -145,16 +143,15 @@ class FilmeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FilmeFormRequest $request, $id)
+    public function update(FilmeFormRequest $request,Filme $filme)
     {
         $dados = $request->except('_token','_method');
-        $filme = $this->filme->find($id);
         $update = $filme->update($dados);
 
         if($update){
-            return redirect()->route('listarFilmes');
+            return redirect()->route('filmes.index');
         }else{
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Filme não atualizado.']);
         }
     }
 
@@ -164,15 +161,14 @@ class FilmeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Filme $filme)
     {
-        $filme = $this->filme->find($id);
         $delete = $filme->delete();
 
         if($delete){
-            return redirect()->route('listarFilmes');
+            return redirect()->route('filmes.index');
         }else{
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Filme não deletado.']);
         }
     }
 }

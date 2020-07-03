@@ -50,9 +50,9 @@ class SalaController extends Controller
         $insert = $sala->create($dados);
 
         if($insert){
-            return redirect()->route('listarSalas');
+            return redirect()->route('salas.index');
         }else{
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Sala não cadastrada.']);
         }
     }
 
@@ -62,9 +62,8 @@ class SalaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Sala $sala)
     {
-        $sala = $this->sala->find($id);
         $titulo = "Ver sala";
         return view('Sala.VerSala', compact('sala','titulo'));
     }
@@ -75,12 +74,10 @@ class SalaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Sala $sala)
     {
-        $sala = $this->sala->find($id);
         $titulo = "Editar sala";
         return view('Sala.EditarSala', compact('sala','titulo'));
-        return"papum {$id}";
     }
 
     /**
@@ -90,16 +87,15 @@ class SalaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SalaFormRequest $request, $id)
+    public function update(SalaFormRequest $request, Sala $sala)
     {
         $dados = $request->except('_token', '_method');
-        $sala = $this->sala->find($id);
         $update = $sala->update($dados);
 
         if($update){
-            return redirect()->route('listarSalas');
+            return redirect()->route('salas.index');
         }else{
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Sala não atualizada.']);
         }
     }
 
@@ -109,15 +105,14 @@ class SalaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Sala $sala)
     {
-        $sala = $this->sala->find($id);
         $delete = $sala->delete();
 
         if($delete){
-            return redirect()->route('listarSalas');
+            return redirect()->route('salas.index');
         }else{
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Sala não deletada.']);
         }
     }
 }

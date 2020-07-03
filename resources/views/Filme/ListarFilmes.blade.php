@@ -3,7 +3,7 @@
 @section('viewFilme')
 
 	<h1 class="titulo">{{$titulo}}</h1>
-	<a href="{{route('cadastrarFilme')}}" class="btn btn-dark botao_table">Cadastrar</a>
+	<a href="{{route('filmes.create')}}" class="btn btn-dark botao_table">Cadastrar</a>
 
 	<table class="table table-striped">
 		<tr>
@@ -20,8 +20,8 @@
 				<td>{{$filme->genero}}</td>
 				<td>{{$filme->duracao}}</td>
 				<td>
-					<a href="{{route('editarFilme',$filme->id)}}" class="acao_table">Editar</a>
-					<a href="{{route('verFilme',$filme->id)}}" class="acao_table">Visualizar</a>
+					<a href="{{route('filmes.edit',$filme->id)}}" class="acao_table">Editar</a>
+					<a href="{{route('filmes.show',$filme->id)}}" class="acao_table">Visualizar</a>
 				</td>
 			</tr>
 		@endforeach

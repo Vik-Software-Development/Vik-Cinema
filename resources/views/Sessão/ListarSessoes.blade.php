@@ -3,7 +3,7 @@
 @section('viewSessao')
 
 	<h1 class="titulo">{{$titulo}}</h1>
-	<a href="{{route('cadastrarSessao')}}" class="btn btn-dark botao_table">Cadastrar</a>
+	<a href="{{route('sessaos.create')}}" class="btn btn-dark botao_table">Cadastrar</a>
 
 	<table class="table table-striped">
 		<tr>
@@ -20,8 +20,8 @@
 				<td>{{$sessao->data}}</td>
 				<td>{{$sessao->hora}}</td>
 				<td>
-					<a href="{{route('editarSessao',$sessao->id)}}" class="acao_table">Editar</a>
-					<a href="{{route('verSessao',$sessao->id)}}" class="acao_table">Visualizar</a>
+					<a href="{{route('sessaos.edit', $sessao->id)}}" class="acao_table">Editar</a>
+					<a href="{{route('sessaos.show', $sessao->id)}}" class="acao_table">Visualizar</a>
 				</td>
 			</tr>
 		@endforeach

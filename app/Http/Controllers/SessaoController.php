@@ -60,15 +60,15 @@ class SessaoController extends Controller
         //validação de Sessão
         $filme = $this->filme->where('nome',$request->idFilme)->get();
         if(count($filme) == 0){
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Filme não existente no sistema.']);
         }
         $sala = $this->sala->where('nome',$request->idSala)->get();
         if(count($sala) == 0){
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Sala não existente no sistema.']);
         }
         $valSessao = $this->sessao->where([['data',$request->data],['hora',$request->hora],['idSala',$sala[0]->id]])->get();
         if(count($valSessao) > 0){
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Já existe uma Sessão marcada, nesta mesma sala, na mesma data no mesmo horário.']);
         }
 
         //cadastrando a Sessão        
@@ -79,9 +79,9 @@ class SessaoController extends Controller
         $insert = $sessao->create($dados);
 
         if($insert){
-            return redirect()->route('listarSessoes');
+            return redirect()->route('sessaos.index');
         }else{
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Sessão não cadastrada.']);
         }
     }
 
@@ -91,9 +91,8 @@ class SessaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Sessão $sessao)
     {
-        $sessao = $this->sessao->find($id);
         $sala = $this->sala->find($sessao->idSala);
         $filme = $this->filme->find($sessao->idFilme);
         $titulo = "Ver Sessão";
@@ -106,9 +105,8 @@ class SessaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Sessão $sessao)
     {
-        $sessao = $this->sessao->find($id);
         $filme = $this->filme->find($sessao->idFilme);
         $sala = $this->sala->find($sessao->idSala);
         $titulo = "Editar Sessão";
@@ -123,33 +121,32 @@ class SessaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SessaoFormRequest $request, $id)
+    public function update(SessaoFormRequest $request, Sessão $sessao)
     {
         //validação de Sessão
         $filme = $this->filme->where('nome',$request->idFilme)->get();
         if(count($filme) == 0){
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Filme não existente no sistema.']);
         }
         $sala = $this->sala->where('nome',$request->idSala)->get();
         if(count($sala) == 0){
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Sala não existente no sistema.']);
         }
         $valSessao = $this->sessao->where([['data',$request->data],['hora',$request->hora],['idSala',$sala[0]->id]])->get();
         if(count($valSessao) > 0){
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Já existe uma Sessão marcada, nesta mesma sala, na mesma data no mesmo horário.']);
         }
 
         //update Sessão        
         $dados = $request->except('_token','_method');
         $dados['idFilme'] = $filme[0]->id;
         $dados['idSala'] = $sala[0]->id;
-        $sessao = $this->sessao->find($id);
         $delete = $sessao->update($dados);
 
         if($delete){
-            return redirect()->route('listarSessoes');
+            return redirect()->route('sessaos.index');
         }else{
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Sessão não atualizada.']);
         }
     }
 
@@ -159,15 +156,14 @@ class SessaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Sessão $sessao)
     {
-        $sessao = $this->sessao->find($id);
         $delete = $sessao->delete();
 
         if($delete){
-            return redirect()->route('listarSessoes');
+            return redirect()->route('sessaos.index');
         }else{
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Sessão não deletada.']);
         }
     }
 }
