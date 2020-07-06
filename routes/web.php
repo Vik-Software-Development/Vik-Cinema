@@ -34,10 +34,11 @@
 Route::get('/', function () {
     return view('welcome');
 })->name('/');
-Route::resource('sessaos','SessaoController');
+Route::resource('sessaos', 'SessaoController');
 Route::resource('filmes', 'FilmeController');
-Route::resource('salas','SalaController');
+Route::resource('salas', 'SalaController');
 Route::resource('funcionarios', 'FuncionarioController');
+Route::resource('bilhetes', 'BilheteController')->except(['edit', 'update']);
 
 //Admin e Login
 Route::get('/admin', 'AuthController@dashboard')->middleware('auth.login')->name('admin.dashboard');

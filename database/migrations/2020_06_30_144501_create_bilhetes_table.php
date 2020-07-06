@@ -15,6 +15,9 @@ class CreateBilhetesTable extends Migration
     {
         Schema::create('bilhetes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('sessao');
+            $table->foreign('sessao')->references('id')->on('sessãos')->onDelete('cascade');
+            $table->integer('preco');
             $table->timestamps();
         });
     }
