@@ -1,6 +1,6 @@
-@extends('Sala.TemplateSala')
+@extends('Template')
 
-@section('viewSala')
+@section('view')
 
 	<h1 class="titulo">{{$titulo}}</h1>
 	<br/>

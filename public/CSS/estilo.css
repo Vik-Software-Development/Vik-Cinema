@@ -11,9 +11,76 @@
 
 .acao_table{
 	margin-right: 10px;
+	width: 10px;
+}
+
+.acao_table{
+	text-decoration: none;
 }
 
 .ver_p{
 	font-family: sans-serif;
 	font-size: 25px;
+}
+
+nav ul{
+	margin-left: 450px;
+}
+
+nav ul li{
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: 150px;
+}
+
+nav ul li a{
+	color: gainsboro;
+}
+
+nav ul li a:hover{
+	color: grey;
+	text-decoration: none;
+}
+
+
+.header{
+	background-color: darkslategray;
+	height: 200px;
+	font-size: 25px;
+}
+
+.footer{
+	background-color: darkslategray;
+	height: 50px;
+}
+
+#nomesFooter{
+	color: gainsboro;
+	margin-top: 20px;
+}
+
+.edit_table{
+	padding: 5px;
+	color: white;
+	background-color: blue;
+}
+
+.show_table{
+	padding: 5px;
+	color: white;
+	background-color: green;
+
+}
+
+.logo{
+	float: left;
+	margin-left: 50px;
+	margin-top: 15px;
+}
+
+.cine{
+	float:left;
+	font-size: 60px;
+	font-family: roboto;
+	margin-top: 60px;
 }

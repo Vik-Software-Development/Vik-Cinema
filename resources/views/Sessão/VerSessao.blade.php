@@ -1,6 +1,6 @@
-@extends('Sessão.TemplateSessao')
+@extends('Template)
 
-@section('viewSessao')
+@section('view')
 
 	<h1 class="titulo">{{$titulo}}</h1>
 	<br/>
