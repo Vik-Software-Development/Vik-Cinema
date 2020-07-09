@@ -92,7 +92,7 @@ class FilmeController extends Controller
      */
     public function show(Filme $filme)
     {
-        $titulo = "Ver filme";
+        $titulo = "Filme";
         return view('Filme.VerFilme',compact('filme','titulo'));
     }
 

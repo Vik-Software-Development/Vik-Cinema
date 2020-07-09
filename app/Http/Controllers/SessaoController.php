@@ -33,7 +33,7 @@ class SessaoController extends Controller
             $sessao->idFilme =  $this->filme->find($sessao->idFilme)->nome;
             $sessao->idSala = $this->sala->find($sessao->idSala)->nome;
         }
-        $titulo = "Listar Sessões";
+        $titulo = "Sessões";
         return view('Sessão.ListarSessoes',compact('sessoes','titulo'));
     }
 
@@ -95,7 +95,7 @@ class SessaoController extends Controller
     {
         $sala = $this->sala->find($sessao->idSala);
         $filme = $this->filme->find($sessao->idFilme);
-        $titulo = "Ver Sessão";
+        $titulo = "Sessão";
         return view('Sessão.VerSessao',compact('sessao','sala','filme','titulo'));
     }
 

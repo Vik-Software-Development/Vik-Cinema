@@ -6,7 +6,7 @@
 		<title>{{$titulo}}</title>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container principal">
 
 			<div class="header">
 
@@ -25,7 +25,7 @@
 							<li><a href="{{route('salas.index')}}">Salas</a></li>
 							<li><a href="{{route('filmes.index')}}">Filmes</a></li>
 							<li><a href="{{route('funcionarios.index')}}">Funcionários</a></li>
-							<li><a href="" class="btn btn-light">Logar</a></li>
+							<li><a href="" class="btn btn-light botao">Logar</a></li>
 						</ul>	
 					</nav>
 				</header>

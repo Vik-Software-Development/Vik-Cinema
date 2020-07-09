@@ -26,7 +26,7 @@
 			<input type="number" name="quantPessoas" id="quantPessoas" class="form-control" value="{{$sala->quantPessoas}}" />
 		</div>
 
-		<center><button class="btn btn-dark">Atualizar</button></center>
+		<center><button class="btn btn-dark botao">Atualizar</button></center>
 	</form>
 
 @endsection

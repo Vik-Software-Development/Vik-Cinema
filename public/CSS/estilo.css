@@ -1,12 +1,19 @@
 .titulo{
-	font-family: sans-serif;
+	font-family: roboto;
 	font-size: 50px;
+	text-shadow: 2px 2px 3px gray;
+	margin-left: 435px;
 }
 
 .botao_table{
 	float: right;
 	margin-bottom: 10px;
 	margin-right: 50px;
+}
+
+.botao{
+	border-style: solid;
+	box-shadow: 3px 3px 4px gray;
 }
 
 .acao_table{
@@ -18,10 +25,6 @@
 	text-decoration: none;
 }
 
-.ver_p{
-	font-family: sans-serif;
-	font-size: 25px;
-}
 
 nav ul{
 	margin-left: 450px;
@@ -83,4 +86,9 @@ nav ul li a:hover{
 	font-size: 60px;
 	font-family: roboto;
 	margin-top: 60px;
+}
+.ver_objeto{
+	font-family: roboto;
+	font-size: 30px;
+	margin: 0px 15px;
 }

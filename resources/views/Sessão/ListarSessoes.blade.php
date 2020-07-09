@@ -3,7 +3,7 @@
 @section('view')
 
 	<h1 class="titulo">{{$titulo}}</h1>
-	<a href="{{route('sessaos.create')}}" class="btn btn-dark botao_table">Cadastrar</a>
+	<a href="{{route('sessaos.create')}}" class="btn btn-dark botao_table botao">Cadastrar</a>
 
 	<table class="table table-striped">
 		<tr>

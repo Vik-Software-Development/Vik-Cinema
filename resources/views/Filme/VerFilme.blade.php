@@ -1,20 +1,20 @@
 @extends('Template')
 
 @section('view')
+	<div class="ver_objeto">
+		<h1 class="titulo">{{$titulo}}</h1>
+		<br/>
+		<p ><strong>Nome:</strong> {{$filme->nome}}</p>
+		<p ><strong>Autor:</strong> {{$filme->autor}}</p>
+		<p ><strong>Gênero:</strong> {{$filme->genero}}</p>
+		<p ><strong>Duração:</strong> {{$filme->duracao}}</p>
 
-	<h1 class="titulo">{{$titulo}}</h1>
-	<br/>
-	<br/>
-	<p class="ver_p"><strong>Nome:</strong> {{$filme->nome}}</p>
-	<p class="ver_p"><strong>Autor:</strong> {{$filme->autor}}</p>
-	<p class="ver_p"><strong>Gênero:</strong> {{$filme->genero}}</p>
-	<p class="ver_p"><strong>Duração:</strong> {{$filme->duracao}}</p>
-
-	<form method="post" action="{{route('filmes.destroy',$filme->id)}}">
-		{!! csrf_field() !!}
-		{!! method_field('DELETE') !!}
-		<button class="btn btn-dark">Deletar</button>
-	</form>
+		<form method="post" action="{{route('filmes.destroy',$filme->id)}}">
+			{!! csrf_field() !!}
+			{!! method_field('DELETE') !!}
+			<button class="btn btn-dark botao">Deletar</button>
+		</form>
+	</div>
 
 
 @endsection

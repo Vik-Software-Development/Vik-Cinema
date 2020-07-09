@@ -22,7 +22,7 @@ class SalaController extends Controller
     public function index()
     {
         $salas = $this->sala->all();
-        $titulo = "Listagem das Salas";
+        $titulo ="Salas";
         return view('Sala.ListarSalas',compact('salas','titulo'));
     }
 
@@ -64,7 +64,7 @@ class SalaController extends Controller
      */
     public function show(Sala $sala)
     {
-        $titulo = "Ver sala";
+        $titulo = "Sala";
         return view('Sala.VerSala', compact('sala','titulo'));
     }
 

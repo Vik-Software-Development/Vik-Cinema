@@ -25,7 +25,7 @@
 			<input type="number" name="quantPessoas" id="quantPessoas" class="form-control"/>
 		</div>
 
-		<center><button class="btn btn-dark">Cadastrar</button></center>
+		<center><button class="btn btn-dark botao">Cadastrar</button></center>
 	</form>
 
 @endsection
