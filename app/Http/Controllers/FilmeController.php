@@ -22,7 +22,7 @@ class FilmeController extends Controller
     public function index()
     {
         $filmes = $this->filme->all();
-        $titulo = "Listar Filmes";
+        $titulo = "Filmes";
         return view('Filme.ListarFilmes', compact('filmes','titulo'));
     }
 

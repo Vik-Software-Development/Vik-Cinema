@@ -1,6 +1,6 @@
-@extends('Filme.TemplateFilme')
+@extends('Template')
 
-@section('viewFilme')
+@section('view')
 
 	@if(isset($errors) && count($errors) > 0)
 		<div class="alert alert-danger">

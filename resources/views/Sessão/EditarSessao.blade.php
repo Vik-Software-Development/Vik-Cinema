@@ -1,6 +1,6 @@
-@extends('Sessão.TemplateSessao')
+@extends('Template')
 
-@section('viewSessao')
+@section('view')
 
 	@if(isset($errors) && count($errors) > 0)
 		<div class="alert alert-danger">

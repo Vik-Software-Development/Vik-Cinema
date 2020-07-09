@@ -1,6 +1,6 @@
-@extends('Sala.TemplateSala')
+@extends('Template')
 
-@section('viewSala')
+@section('view')
 
 	@if(isset($errors) && count($errors) > 0)
 		<div class="alert alert-danger">
