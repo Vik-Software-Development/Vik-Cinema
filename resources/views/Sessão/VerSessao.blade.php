@@ -1,13 +1,13 @@
 @extends('Template')
 
 @section('view')
-	<div class="ver_objeto">
-		<h1 class="titulo">{{$titulo}}</h1>
+	<div class="ver">
+		<center><h1 class="titulo">{{$titulo}}</h1></center>
 		<br/>
-		<p class="ver_p"><strong>Filme:</strong> {{$filme->nome}}</p>
-		<p class="ver_p"><strong>Sala:</strong> {{$sala->nome}}</p>
-		<p class="ver_p"><strong>Data:</strong> {{$sessao->data}}</p>
-		<p class="ver_p"><strong>Hora:</strong> {{$sessao->hora}}</p>
+		<p class="label"><strong>Filme:</strong> {{$filme->nome}}</p>
+		<p class="label"><strong>Sala:</strong> {{$sala->nome}}</p>
+		<p class="label"><strong>Data:</strong> {{$sessao->data}}</p>
+		<p class="label"><strong>Hora:</strong> {{$sessao->hora}}</p>
 
 		<form method="post" action="{{route('sessaos.destroy',$sessao->id)}}">
 			{!! csrf_field() !!}

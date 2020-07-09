@@ -6,7 +6,7 @@
 		<title>{{$titulo}}</title>
 	</head>
 	<body>
-		<div class="container principal">
+		<div class="principal">
 
 			<div class="header">
 
@@ -17,7 +17,7 @@
 						<path fill-rule="evenodd" d="M9 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 					</svg></span>
 
-					<h1 class="cine">Vik-Cinema</h1>
+					<h1 class="vik">Vik-Cinema</h1>
 					<nav>
 						<ul>
 							<li><a href="{{route('/')}}">Home</a></li>

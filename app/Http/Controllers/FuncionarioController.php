@@ -16,7 +16,8 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        return view('Funcionario/index')->with('funcionarios', Funcionario::all());
+        $titulo = "Funcionários";
+        return view('Funcionario/index', compact('titulo'))->with('funcionarios', Funcionario::all());
     }
 
     /**
@@ -26,7 +27,8 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        return view('Funcionario/create');
+        $titulo = "Cadastrar Funcionário";
+        return view('Funcionario/create', compact('titulo'));
     }
 
     /**
@@ -71,7 +73,8 @@ class FuncionarioController extends Controller
      */
     public function show(Funcionario $funcionario)
     {
-        return view('Funcionario/show')->with('funcionario', $funcionario);
+        $titulo = "Funcionário";
+        return view('Funcionario/show', compact('titulo'))->with('funcionario', $funcionario);
     }
 
     /**
@@ -82,6 +85,7 @@ class FuncionarioController extends Controller
      */
     public function edit(Funcionario $funcionario)
     {
+        $titulo = "Editar Funcionário";
         return view('Funcionario/edit')->with('funcionario', $funcionario);
     }
 
