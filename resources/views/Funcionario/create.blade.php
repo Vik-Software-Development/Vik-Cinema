@@ -1,55 +1,50 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('Template')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funcionario Create</title>
-</head>
+@section('view')
 
-<body>
-    <div>
+    <center><h1 class="titulo">{{$titulo}}</h1></center>
+    <div class="cadastrar_editar">
         <form action="{{route('funcionarios.store')}}" method="POST">
             @csrf
-            <div>
-                <label for='Nome'>Nome</label>
-                <input type='text' name='Nome'>
+            <div class="form-group">
+                <label for='Nome' class="label">Nome:</label>
+                <input type='text' name='Nome' class="form-control"/>
             </div>
-            <div>
-                <label for='CPF'>CPF</label>
-                <input type='text' name='CPF' min='11' max='11'>
+            <div class="form-group">
+                <label for='CPF' class="label">CPF:</label>
+                <input type='text' name='CPF' min='11' max='11' class="form-control"/
             </div>
-            <div>
-                <label for='Telefone'>Telefone</label>
-                <input type='text' name='Telefone' id='telefone' data-mask="(00) 0000-0000" data-mask-selectonfocus="true">
+            <div class="form-group">
+                <label for='Telefone' class="label">Telefone:</label>
+                <input type='text' name='Telefone' id='telefone' data-mask="(00) 0000-0000" data-mask-selectonfocus="true" placeholder="(ddd) numero (ex: (87) 99999-9999)" class="form-control"/>
             </div>
-            <div>
-                <label for='Email'>Email</label>
-                <input type='email' name='Email'>
+            <div class="form-group">
+                <label for='Email' class="label">Email:</label>
+                <input type='email' name='Email' class="form-control"/>
             </div>
-            <div>
-                <label for='Senha'>Senha</label>
-                <input type='password' name='Senha'>
+            <div class="form-group">
+                <label for='Senha' class="label">Senha:</label>
+                <input type='password' name='Senha' class="form-control"/>
             </div>
-            <button type='submit'>Cadastrar</button>
+            <center><button type='submit' class="btn btn-dark botao">Cadastrar</button></center>
         </form>
     </div>
-</body>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js'></script>
-<script>
-    $(document).ready(function() {
-        var maskBehavior = function(val) {
-                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-            },
-            options = {
-                onKeyPress: function(val, e, field, options) {
-                    field.mask(maskBehavior.apply({}, arguments), options);
-                }
-            };
 
-        $('#telefone').mask(maskBehavior, options);
-    });
-</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js'></script>
+    <script>
+        $(document).ready(function() {
+            var maskBehavior = function(val) {
+                    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+                },
+                options = {
+                    onKeyPress: function(val, e, field, options) {
+                        field.mask(maskBehavior.apply({}, arguments), options);
+                    }
+                };
 
-</html>
+            $('#telefone').mask(maskBehavior, options);
+        });
+    </script>
+
+@endsection

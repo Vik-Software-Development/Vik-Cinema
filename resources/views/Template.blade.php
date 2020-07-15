@@ -6,7 +6,7 @@
 		<title>{{$titulo}}</title>
 	</head>
 	<body>
-		<div class="container">
+		<div class="principal">
 
 			<div class="header">
 
@@ -17,7 +17,7 @@
 						<path fill-rule="evenodd" d="M9 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 					</svg></span>
 
-					<h1 class="cine">Vik-Cinema</h1>
+					<h1 class="vik">Vik-Cinema</h1>
 					<nav>
 						<ul>
 							<li><a href="{{route('/')}}">Home</a></li>
@@ -25,7 +25,7 @@
 							<li><a href="{{route('salas.index')}}">Salas</a></li>
 							<li><a href="{{route('filmes.index')}}">Filmes</a></li>
 							<li><a href="{{route('funcionarios.index')}}">Funcionários</a></li>
-							<li><a href="" class="btn btn-light">Logar</a></li>
+							<li><a href="" class="btn btn-light botao">Logar</a></li>
 						</ul>	
 					</nav>
 				</header>

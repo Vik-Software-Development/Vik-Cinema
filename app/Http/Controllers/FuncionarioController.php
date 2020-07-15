@@ -16,7 +16,8 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        return view('Funcionario/index')->with('funcionarios', Funcionario::all());
+        $titulo = "Funcionários";
+        return view('Funcionario/index', compact('titulo'))->with('funcionarios', Funcionario::all());
     }
 
     /**
@@ -26,7 +27,8 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        return view('Funcionario/create');
+        $titulo = "Cadastrar Funcionário";
+        return view('Funcionario/create', compact('titulo'));
     }
 
     /**
@@ -60,7 +62,11 @@ class FuncionarioController extends Controller
         $newFuncionario->Telefone = $request->Telefone;
         $newFuncionario->Email = $request->Email;
         $newFuncionario->Senha = Hash::make($request->Senha);
-        $newFuncionario->save();
+        $save = $newFuncionario->save();
+
+        if($save){
+            return redirect()->route('funcionarios.index');
+        }
     }
 
     /**
@@ -71,7 +77,8 @@ class FuncionarioController extends Controller
      */
     public function show(Funcionario $funcionario)
     {
-        return view('Funcionario/show')->with('funcionario', $funcionario);
+        $titulo = "Funcionário";
+        return view('Funcionario/show', compact('titulo'))->with('funcionario', $funcionario);
     }
 
     /**
@@ -82,7 +89,8 @@ class FuncionarioController extends Controller
      */
     public function edit(Funcionario $funcionario)
     {
-        return view('Funcionario/edit')->with('funcionario', $funcionario);
+        $titulo = "Editar Funcionário";
+        return view('Funcionario/edit', compact("titulo"))->with('funcionario', $funcionario);
     }
 
     /**
@@ -111,12 +119,14 @@ class FuncionarioController extends Controller
             //senha com menos de 8 caracteres
         }
 
-        $funcionario->Nome = $request->Nome;
-        $funcionario->CPF = $request->CPF;
-        $funcionario->Telefone = $request->Telefone;
-        $funcionario->Email = $request->Email;
-        $funcionario->Senha = Hash::make($request->Senha);
-        $funcionario->save();
+        $dados = $request->except('_token');
+        $update = $funcionario->update();
+
+        if($update){
+            return redirect()->route('funcionarios.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -127,6 +137,12 @@ class FuncionarioController extends Controller
      */
     public function destroy(Funcionario $funcionario)
     {
-        $funcionario->delete();
+       $delete = $funcionario->delete();
+
+       if($delete){
+            return redirect()->route('funcionarios.index');
+       }else{
+            return redirect()->back();
+       }
     }
 }
