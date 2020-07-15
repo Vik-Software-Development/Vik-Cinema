@@ -8,23 +8,23 @@
             @csrf
             <div class="form-group">
                 <label for='Nome' class="label">Nome:</label>
-                <input type='text' name='Nome' class="form-control">
+                <input type='text' name='Nome' class="form-control"/>
             </div>
             <div class="form-group">
                 <label for='CPF' class="label">CPF:</label>
-                <input type='text' name='CPF' min='11' max='11' class="form-control">
+                <input type='text' name='CPF' min='11' max='11' class="form-control"/
             </div>
             <div class="form-group">
                 <label for='Telefone' class="label">Telefone:</label>
-                <input type='text' name='Telefone' id='telefone' data-mask="(00) 0000-0000" data-mask-selectonfocus="true" placeholder="(ddd) numero (ex: (87) 99999-9999)" class="form-control">
+                <input type='text' name='Telefone' id='telefone' data-mask="(00) 0000-0000" data-mask-selectonfocus="true" placeholder="(ddd) numero (ex: (87) 99999-9999)" class="form-control"/>
             </div>
             <div class="form-group">
                 <label for='Email' class="label">Email:</label>
-                <input type='email' name='Email' class="form-control">
+                <input type='email' name='Email' class="form-control"/>
             </div>
             <div class="form-group">
                 <label for='Senha' class="label">Senha:</label>
-                <input type='password' name='Senha' class="form-control">
+                <input type='password' name='Senha' class="form-control"/>
             </div>
             <center><button type='submit' class="btn btn-dark botao">Cadastrar</button></center>
         </form>
